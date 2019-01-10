@@ -9,7 +9,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "promisify-call": "^2.0.4",
     "zerorpc": "^0.9.8"
   }
 }
