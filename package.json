@@ -10,5 +10,14 @@
   "license": "ISC",
   "dependencies": {
     "zerorpc": "^0.9.8"
-  }
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/parthi2929/testrpc.git"
+  },
+  "bugs": {
+    "url": "https://github.com/parthi2929/testrpc/issues"
+  },
+  "homepage": "https://github.com/parthi2929/testrpc#readme"
 }
