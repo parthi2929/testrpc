@@ -42,7 +42,7 @@ function verySlowFunction(test_res, callback)
     client.invoke("predict_image", "image path", function(error, res, more) {
         console.log(res);                              // server response as per method invoked
         console.timeEnd('predict_image_time');
-        // test_res.send('py server responded with result');
+        test_res.write('py server responded with result');
         callback();
     });
 }
@@ -50,17 +50,18 @@ function verySlowFunction(test_res, callback)
 app.get('/test', (req, res) => {
 
     var delayed = new DelayedResponse(req, res);
-    verySlowFunction(res, delayed.start(1000,1000));  
+    verySlowFunction(res, delayed.start(2000,1000));  
 
     delayed.on('heartbeat', function (results) 
     {
+        res.write(' ');
         console.log('keeping the request alive');
     });
 
     delayed.on('done', function (results) 
     {
         console.log('slow function is done');    
-        res.send('py server responded with result');
+        res.end();
     });    
 });
 
