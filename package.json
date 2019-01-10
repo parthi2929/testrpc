@@ -9,6 +9,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "express": "^4.16.4",
+    "http-delayed-response": "0.0.4",
     "zerorpc": "^0.9.8"
   },
   "devDependencies": {},
