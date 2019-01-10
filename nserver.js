@@ -3,8 +3,6 @@ const spawn = require('child_process').spawn;
 const http = require('http');
 
 
-const port = 3000;
-
 //start python server
 var server = spawn('python', ['pyserver.py']);
 var client = new zerorpc.Client();
@@ -40,6 +38,7 @@ const nserver = http.createServer((req, res) => {
     res.setHeader('Content-Type', 'text/plain');
     res.end('Hello World\n');
   });
+var port = process.env.PORT || 8080;
 nserver.listen(port, () => {
 console.log(`Node Server started. Running at http://localhost:${port}/`);
 });
