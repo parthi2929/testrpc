@@ -6,6 +6,7 @@ import fastai
 from fastai import *
 from fastai.vision import *
 from fastai.core import *
+import torch
 
 
 
@@ -17,10 +18,13 @@ PATH_TO_MODELS_DIR = Path('.') # by default just use /models in root dir
 class FastaiImageClassifier(object):
     def __init__(self):
         print('fastai version: {}'.format(fastai.__version__ ))
-        # defaults.device = torch.device('cpu') 
+        defaults.device = torch.device('cpu') 
         self.learner = self.setup_model(PATH_TO_MODELS_DIR, NAME_OF_PTH_FILE, YOUR_CLASSES_HERE)
         print('model created')
 
+    def getDevice(self):
+        device = 'cuda' if torch.cuda.is_available() else 'cpu'
+        return device
 
     def setup_model(self, path_to_pth_file, learner_name_to_load, classes):
         "Initialize our learner for inference"

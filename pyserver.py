@@ -10,12 +10,13 @@ class PyServer(object):
             self.start = timer()
             # time.sleep(5)
             self.model = FastaiImageClassifier()
+            self.model.device = self.model.getDevice()
             self.end = timer()
         except Exception as e:
             raise Exception(str(e))
 
     def start_pyserver(self):
-        return "Py server started in " + str(round(self.end - self.start, 2)) + " s"
+        return "Py server started in " + str(round(self.end - self.start, 2)) + " s, uses " + self.model.device
 
     def predict_image(self, image_path):
         time.sleep(10)  #to trigger H12 timeout error in heroku 
