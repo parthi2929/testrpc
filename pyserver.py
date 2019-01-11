@@ -1,15 +1,19 @@
 import zerorpc
 import time
 from pymodel import FastaiImageClassifier
+from timeit import default_timer as timer
 
 
 class PyServer(object):
     def __init__(self):
-        time.sleep(5)
-        # self.model = FastaiImageClassifier()
+        self.start = timer()
+        # time.sleep(5)
+        self.model = FastaiImageClassifier()
+        self.end = timer()
+
 
     def start_pyserver(self):
-        return "Py server started"
+        return "Py server started in " + str(round(self.end - self.start, 2)) + " s"
 
     def predict_image(self, image_path):
         time.sleep(10)  #to trigger H12 timeout error in heroku 
