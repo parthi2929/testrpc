@@ -6,11 +6,13 @@ from timeit import default_timer as timer
 
 class PyServer(object):
     def __init__(self):
-        self.start = timer()
-        # time.sleep(5)
-        self.model = FastaiImageClassifier()
-        self.end = timer()
-
+        try:
+            self.start = timer()
+            # time.sleep(5)
+            self.model = FastaiImageClassifier()
+            self.end = timer()
+        except Exception as e:
+            raise Exception(str(e))
 
     def start_pyserver(self):
         return "Py server started in " + str(round(self.end - self.start, 2)) + " s"
