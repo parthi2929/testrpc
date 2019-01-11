@@ -50,6 +50,8 @@ function verySlowFunction(test_res, callback)
 app.get('/test', (req, res) => {
 
     var delayed = new DelayedResponse(req, res);
+    // delayed.json();
+    res.setHeader('Content-Type', 'application/json');
     verySlowFunction(res, delayed.start(2000,1000));  
 
     delayed.on('heartbeat', function (results) 
