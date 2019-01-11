@@ -21,5 +21,6 @@
   "bugs": {
     "url": "https://github.com/parthi2929/testrpc/issues"
   },
-  "homepage": "https://github.com/parthi2929/testrpc#readme"
+  "homepage": "https://github.com/parthi2929/testrpc#readme",
+  "cacheDirectories": ["models"]
 }
