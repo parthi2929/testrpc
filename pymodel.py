@@ -16,10 +16,13 @@ PATH_TO_MODELS_DIR = Path('.') # by default just use /models in root dir
 
 class FastaiImageClassifier(object):
     def __init__(self):
-        print('fastai version: {}'.format(fastai.__version__ ))
-        defaults.device = torch.device('cpu')
-        self.learner = self.setup_model(PATH_TO_MODELS_DIR, NAME_OF_PTH_FILE, YOUR_CLASSES_HERE)
-        print('model created')
+        try:
+            print('fastai version: {}'.format(fastai.__version__ ))
+            defaults.device = torch.device('cpu')
+            self.learner = self.setup_model(PATH_TO_MODELS_DIR, NAME_OF_PTH_FILE, YOUR_CLASSES_HERE)
+            print('model created')
+        except Exception as e:
+            raise Exception(str(e))
 
     def setup_model(self, path_to_pth_file, learner_name_to_load, classes):
         "Initialize our learner for inference"
@@ -29,12 +32,10 @@ class FastaiImageClassifier(object):
             path_to_pth_file, classes, 
             tfms=get_transforms(), 
             size=64).normalize(imagenet_stats)
-
-        learner = create_cnn(data, models.resnet34).load(learner_name_to_load)
-        
-        
+        learner = create_cnn(data, models.resnet34).load(learner_name_to_load)        
         print('created learner')
         return learner    
+
     
     def predict(self, img_path):
 

@@ -9,7 +9,7 @@ var DelayedResponse = require('http-delayed-response');
 
 //start python server
 var server = spawn('python', ['pyserver.py']);
-var client = new zerorpc.Client({ timeout: 120,heartbeatInterval: 60000});
+var client = new zerorpc.Client({ timeout: 60,heartbeatInterval: 30000});
 var isPyServerStarted = false; 
 if (server != null)
 {
@@ -24,9 +24,17 @@ client.on("error", function(error) {
     isPyServerStarted = false;
 });
 console.time('start_pyserver time');
-client.invoke("start_pyserver", function(error, res, more) {
-    console.log(res);                              // server response as per method invoked
-    isPyServerStarted = true; 
+client.invoke("start_pyserver", function(error, res, more) 
+{
+    if (error)
+    {
+        console.log('Error: ' + error);
+    } 
+    else
+    {
+        console.log('Success: ' + res);                              // server response as per method invoked
+        isPyServerStarted = true;     
+    }
     console.timeEnd('start_pyserver time');
 });
 
