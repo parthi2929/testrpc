@@ -1,1 +1,1 @@
-web: node nserver.js
+web: python pyserver.py
