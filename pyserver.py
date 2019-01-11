@@ -5,8 +5,8 @@ from pymodel import FastaiImageClassifier
 
 class PyServer(object):
     def __init__(self):
-        # time.sleep(5)
-        self.model = FastaiImageClassifier()
+        time.sleep(5)
+        # self.model = FastaiImageClassifier()
 
     def start_pyserver(self):
         return "Py server started"
