@@ -6,8 +6,7 @@ import fastai
 from fastai import *
 from fastai.vision import *
 from fastai.core import *
-import torch
-
+# import torch
 
 
 # SETUP HERE
@@ -33,7 +32,7 @@ class FastaiImageClassifier(object):
         data = ImageDataBunch.single_from_classes(
             path_to_pth_file, classes, 
             tfms=get_transforms(), 
-            size=32).normalize(imagenet_stats)
+            size=64).normalize(imagenet_stats)
         learner = create_cnn(data, models.resnet34).load(learner_name_to_load)        
         print('created learner')
         return learner    

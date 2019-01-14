@@ -9,7 +9,7 @@ var DelayedResponse = require('http-delayed-response');
 
 //start python server
 var server = spawn('python', ['pyserver.py']);
-var client = new zerorpc.Client({ timeout: 360,heartbeatInterval: 60000});
+var client = new zerorpc.Client({ timeout: 60,heartbeatInterval: 30000});
 var isPyServerStarted = false; 
 if (server != null)
 {

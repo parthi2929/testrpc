@@ -1,9 +1,12 @@
-numpy 
-torchvision_nightly
--f https://download.pytorch.org/whl/nightly/cpu/torch_nightly.html
+# numpy 
+# torchvision_nightly
+# -f https://download.pytorch.org/whl/nightly/cpu/torch_nightly.html
 
-#https://download.pytorch.org/whl/cpu/torch-1.0.0-cp36-cp36m-linux_x86_64.whl
+
+https://download.pytorch.org/whl/cpu/torch-1.0.0-cp36-cp36m-linux_x86_64.whl
 #pip3 install https://download.pytorch.org/whl/cpu/torch-1.0.0-cp36-cp36m-win_amd64.whl
-fastai==1.0.38
+fastai
 zerorpc
+
+#try using pip3 install -r requirements.txt --no-deps if getting  "python setup.py egg_info"  error
 
